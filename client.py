@@ -3,19 +3,35 @@
 print ('Content-Type: text/html')
 print ('')
 import socket,pickle,cgi
+import cv2
+import numpy
+import time
+import sys
+from PIL import Image
+import pickle
 
 form=cgi.FieldStorage()
 # get the picture and deal with it.
 # store the img information in the img variable
 s = socket.socket()
-s.connect(('192.168.1.102',1234)) # enter server node ip address
+s.connect((socket.gethostname(),1234)) # enter server node ip address
+
 #data = img # image information
-data_s = 'test,test'
+data_b = Image.open("data/dog.jpg")
+data_s = pickle.dumps(data_b)
+print(len(data_s))
+
 num = 0 # try 10 times
 while(num<10):
     try:
+        s.send(str(len(data_s)).encode())
+        rcv = s.recv(1024)  # reveive the result( a number)
+        rcv = rcv.decode()
+        print(rcv)
         s.send(data_s)
-        rcv = s.recv(1024) # reveive the result( a number)
+        res = s.recv(1024)  # reveive the result( a number)
+        res = rcv.decode()
+        print("result: ", res)
         s.close()
         break
     except Exception:
