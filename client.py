@@ -19,16 +19,13 @@ s.connect((socket.gethostname(),1234)) # enter server node ip address
 #data = img # image information
 data_b = Image.open("dog.jpg")
 data_s = pickle.dumps(data_b)
-print(len(data_s))
-print("asdsad")
 num = 0 # try 10 times
 while(num<10):
     try:
         s.send(str(len(data_s)).encode())
-        rcv = s.recv(1024)  # reveive the result( a number)
-        rcv = rcv.decode()
-        print(rcv)
         s.send(data_s)
+        res = s.recv(1024)
+        print(pickle.loads(res))
         s.close()
         break
     except Exception:

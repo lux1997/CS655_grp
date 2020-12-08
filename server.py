@@ -16,21 +16,23 @@ class MyServer(socketserver.StreamRequestHandler):
             if length_s:
                 length_s = length_s.decode()
                 length = int(length_s)
-                self.request.send("receive length".encode())
-                print(length)
                 str_data = b""
-                while True:
+                num = 0
+                while num < length:
                     packet = self.request.recv(4096)
-                    if not packet: break
+                    if not packet:
+                        break
                     str_data += packet
+                    num += 4096
+                    #print(num)
+                #print(length)
                 img = pickle.loads(str_data)
                 #img.save("img2.jpg", "JPEG")
-                print("esesa")
                 clf = Classifier()
                 # img = Image.open("data/dog.jpg")
                 res = clf.predict(img)
                 print(res)
-                #self.request.send(pickle.dumps(res))
+                self.request.send(pickle.dumps(res))
             else:
                 break
 
