@@ -17,10 +17,10 @@ s = socket.socket()
 s.connect((socket.gethostname(),1234)) # enter server node ip address
 
 #data = img # image information
-data_b = Image.open("data/dog.jpg")
+data_b = Image.open("dog.jpg")
 data_s = pickle.dumps(data_b)
 print(len(data_s))
-
+print("asdsad")
 num = 0 # try 10 times
 while(num<10):
     try:
@@ -29,13 +29,11 @@ while(num<10):
         rcv = rcv.decode()
         print(rcv)
         s.send(data_s)
-        res = s.recv(1024)  # reveive the result( a number)
-        res = rcv.decode()
-        print("result: ", res)
         s.close()
         break
     except Exception:
         num = num + 1
         print('[!] Server not found ot not open')
         continue
+
 ##################return the html page with rcv result################

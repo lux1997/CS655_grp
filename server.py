@@ -1,8 +1,8 @@
 import socketserver
 import socket
 import pickle
+from classifier import Classifier
 import numpy as np
-import classifier
 from PIL import Image
 import cv2
 
@@ -24,12 +24,13 @@ class MyServer(socketserver.StreamRequestHandler):
                     if not packet: break
                     str_data += packet
                 img = pickle.loads(str_data)
-                # img.save("img2.jpg", "JPEG")
-                clf = classifier.Classifier()
+                #img.save("img2.jpg", "JPEG")
+                print("esesa")
+                clf = Classifier()
                 # img = Image.open("data/dog.jpg")
                 res = clf.predict(img)
                 print(res)
-                self.request.send(pickle.dumps(res))
+                #self.request.send(pickle.dumps(res))
             else:
                 break
 
