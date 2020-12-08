@@ -2,7 +2,7 @@ import SocketServer
 import socket
 import pickle
 import numpy as np
-from classifier import Classifier
+import classifier
 from PIL import Image
 import cv2
 
@@ -19,7 +19,7 @@ class MyServer(SocketServer.StreamRequestHandler):
                 data = np.frombuffer(str_data, np.uint8)
                 img = cv2.imdecode(data, cv2.IMREAD_COLOR)
 
-                clf = Classifier()
+                clf = classifier.Classifier()
                 # img = Image.open("data/dog.jpg")
                 res = clf.predict(img)
                 print(res)
