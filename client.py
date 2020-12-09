@@ -28,6 +28,7 @@ num = 0 # try 10 times
 while(num<10):
     try:
         s.send(str(len(data_s)).encode())
+        len = s.recv(1024);        
         s.send(data_s)
         res = s.recv(1024)
         res = res.decode()
