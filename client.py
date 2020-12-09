@@ -43,22 +43,12 @@ while(num<10):
 ##################return the html page with rcv result################
 
 ############## connnection part ends
-print ("""\
-<html>
-<head>
-<meta charset="utf-8">
-<title>CS655 geni project</title>
-</head>
-<body>
-<h1>Recognition complete!</h1>
-<p>The picture that you upload is:</p>
-<h2>The result is:{}</h2>
-<a href="/index.html">
-    <button>try again!</button>
-</a>
-</body>
-</html>
-""".format(res))
+print('Content-type:text/html\n\n')
+print('<html>')
+print('  <head>')
+print('    <h1>Recognition complete!</h1>') 
+print('  </head>')
+print('</html>')
 else:
     print ("""\
     <html>
