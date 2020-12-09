@@ -1,14 +1,9 @@
-#!C:\Users\18656\AppData\Local\Programs\Python\Python38-32\python.exe
+#!/usr/bin/python3.7
 # -*- coding: UTF-8 -*-
 print ('Content-Type: text/html')
 print ('')
 import socket,pickle,cgi,os
-import cv2
-import numpy
-import time
-import sys
 from PIL import Image
-import pickle
 
 form=cgi.FieldStorage()
 fileitem=form['filename']
