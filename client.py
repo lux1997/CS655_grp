@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 print ('Content-Type: text/html')
 print ('')
-import socket,pickle,cgi
+import socket,pickle,cgi,os
 import cv2
 import numpy
 import time
@@ -11,21 +11,32 @@ from PIL import Image
 import pickle
 
 form=cgi.FieldStorage()
+fileitem=form['filename']
+
+
+
+fn=os.path.basename(fileitem.filename)
+
+open(fn,'wb').write(fileitem.file.read())
+#message = mpimg.imread('/Users/chuci/apa/CGI-Executables/files/'+fn)
+img = Image.open(fn)
+
 # get the picture and deal with it.
 # store the img information in the img variable
 s = socket.socket()
-s.connect((socket.gethostname(),1234)) # enter server node ip address
+s.connect(('192.168.1.102',1234)) # enter server node ip address
 
 #data = img # image information
-data_b = Image.open("dog.jpg")
-data_s = pickle.dumps(data_b)
+#data_b = Image.open("dog.jpg")
+data_s = pickle.dumps(img)
 num = 0 # try 10 times
 while(num<10):
     try:
         s.send(str(len(data_s)).encode())
         s.send(data_s)
         res = s.recv(1024)
-        print(pickle.loads(res))
+        res = res.decode()
+        print(res)
         s.close()
         break
     except Exception:
@@ -34,3 +45,36 @@ while(num<10):
         continue
 
 ##################return the html page with rcv result################
+
+############## connnection part ends
+    print ("""\
+    <html>
+    <head>
+    <meta charset="utf-8">
+    <title>CS655 geni project</title>
+    </head>
+    <body>
+    <h1>Recognition complete!</h1>
+    <p>The picture that you upload is:</p>
+    <h2>The result is:{}</h2>
+    <a href="/index.html">
+        <button>try again!</button>
+    </a>
+    </body>
+    </html>
+    """.format(res))
+else:
+    print ("""\
+    <html>
+    <head>
+    <meta charset="utf-8">
+    <title>CS655 geni project</title>
+    </head>
+    <body>
+    <h1>uploading faild!</h1>
+    <a href="/index.html">
+        <button>back</button>
+    </a>
+    </body>
+    </html>
+    """)

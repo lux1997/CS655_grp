@@ -32,7 +32,7 @@ class MyServer(socketserver.StreamRequestHandler):
                 # img = Image.open("data/dog.jpg")
                 res = clf.predict(img)
                 print(res)
-                self.request.send(pickle.dumps(res))
+                self.request.send(res.encode())
             else:
                 break
 
