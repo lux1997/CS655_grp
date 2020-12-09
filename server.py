@@ -4,7 +4,6 @@ import pickle
 from classifier import Classifier
 import numpy as np
 from PIL import Image
-import cv2
 
 encoding = 'utf-8'
 BUFSIZE = 1024
