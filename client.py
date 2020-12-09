@@ -32,7 +32,6 @@ while(num<10):
         s.send(data_s)
         res = s.recv(1024)
         res = res.decode()
-        print(res)
         s.close()
         break
     except Exception:
@@ -51,7 +50,6 @@ while(num<10):
     </head>
     <body>
     <h1>Recognition complete!</h1>
-    <p>The picture that you upload is:</p>
     <h2>The result is:{}</h2>
     <a href="/index.html">
         <button>try again!</button>
