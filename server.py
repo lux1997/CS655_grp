@@ -7,6 +7,7 @@ from PIL import Image
 
 encoding = 'utf-8'
 BUFSIZE = 1024
+clf = Classifier()
 
 class MyServer(socketserver.StreamRequestHandler):
     def handle(self):
@@ -27,7 +28,6 @@ class MyServer(socketserver.StreamRequestHandler):
                     
                 img = pickle.loads(str_data)
                 #img.save("img2.jpg", "JPEG")
-                clf = Classifier()
                 # img = Image.open("data/dog.jpg")
                 res = clf.predict(img)
                 print(res)
