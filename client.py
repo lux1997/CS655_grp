@@ -19,7 +19,7 @@ img = Image.open(fn)
 # get the picture and deal with it.
 # store the img information in the img variable
 s = socket.socket()
-s.connect(('server.ImgRegApp.ch-geni-net.instageni.cenic.net',1234)) # enter server node ip address
+s.connect(('204.102.244.63',1234)) # enter server node ip address
 
 #data = img # image information
 #data_b = Image.open("dog.jpg")
@@ -28,10 +28,11 @@ num = 0 # try 10 times
 while(num<10):
     try:
         s.send(str(len(data_s)).encode())
-        len = s.recv(1024);        
+        len = s.recv(1024)
         s.send(data_s)
         res = s.recv(1024)
         res = res.decode()
+        print(res)
         s.close()
         break
     except Exception:
@@ -50,6 +51,7 @@ while(num<10):
     </head>
     <body>
     <h1>Recognition complete!</h1>
+    <p>The picture that you upload is:</p>
     <h2>The result is:{}</h2>
     <a href="/index.html">
         <button>try again!</button>
