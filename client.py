@@ -24,7 +24,7 @@ img = Image.open(fn)
 # get the picture and deal with it.
 # store the img information in the img variable
 s = socket.socket()
-s.connect(('192.168.1.102',1234)) # enter server node ip address
+s.connect(('server.ImgRegApp.ch-geni-net.instageni.cenic.net',1234)) # enter server node ip address
 
 #data = img # image information
 #data_b = Image.open("dog.jpg")
