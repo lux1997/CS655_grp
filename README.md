@@ -5,25 +5,25 @@
 ### Setup
 1. Setup the Topology:
 
-Reserve it from ```rspec.xml```:https://raw.githubusercontent.com/lux1997/CS655_grp/main/rspec.xml
+   Reserve it from ```rspec.xml```:https://raw.githubusercontent.com/lux1997/CS655_grp/main/rspec.xml
 
-or
-
-Manually create the nodes, add one VM named server, then add one or multiple VM named client (our Rspec uses 5 client nodes), enable public routable ip for the nodes. Then set any InstaGENI.
+   Or manually create the nodes: add one VM named server, then add one or multiple VM named client (our Rspec uses 5 client nodes), connect each client node with the server node. Then enable public routable ip for the nodes and set any InstaGENI.
 
 2. Server Node:
-Login to the server node, run ```server.sh```, the script will install pip on python3, pytorch, torchvision numpy and PIL and download the server codes from this github repo.
 
-Then run the server:
+   Login to the server node, run ```server.sh```, the script will install pip on python3, pytorch, torchvision numpy and PIL and download the server codes from this github repo.
+
+   Then run the server:
 ```
 python3 server.py
 ```
-To run it in background:
+   To run it in background:
 ```
 nohup python3 server.py &
 ```
 3. Client Node:
-Login to the client node, run ```client.sh```, the script will install pip on python3, PIL and apache2. You need to run it on each client node.
+
+   Login to the client node, run ```client.sh```, the script will install pip on python3, PIL and apache2. You need to run it on each client node.
 ### How to Run
 If all the setups have finished, visit the address for any client node on your browser to view the web interface. 
 
