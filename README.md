@@ -25,8 +25,8 @@
 
    Login to the client node, run ```client.sh```, the script will install pip on python3, PIL and apache2. You need to run it on each client node.
 ### How to Run
-- If all the setups have finished, visit the address for any client node on your browser to view the web interface. 
-
-- If you use our Rspec, the addresses would be ```http://204.102.244.59/```, ```http://204.102.244.60/```, ```http://204.102.244.62/```, ```http://204.102.244.55/```, ```http://204.102.244.54/```
+   If all the setups have finished, visit the address for any client node on your browser to view the web interface. 
+   
+   For example, in our experiment the client addresses are ```http://204.102.244.59/```, ```http://204.102.244.60/```, ```http://204.102.244.62/```, ```http://204.102.244.55/``` and ```http://204.102.244.54/```
 ## Team Members
 Xiao Lu, Tianqi Tan, Hao Yu, Zixiang Wei
