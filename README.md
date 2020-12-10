@@ -14,13 +14,13 @@
    Login to the server node, run ```server.sh```, the script will install pip on python3, pytorch, torchvision numpy and PIL and download the server codes from this github repo.
 
    Then run the server:
-```
-python3 server.py
-```
+   ```
+   python3 server.py
+   ```
    To run it in background:
-```
-nohup python3 server.py &
-```
+   ```
+   nohup python3 server.py &
+   ```
 3. Client Node:
 
    Login to the client node, run ```client.sh```, the script will install pip on python3, PIL and apache2. You need to run it on each client node.
