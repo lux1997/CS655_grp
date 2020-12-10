@@ -30,7 +30,7 @@ class MyServer(socketserver.StreamRequestHandler):
                 img = pickle.loads(str_data)
                 #img.save("img2.jpg", "JPEG")
                 #img = Image.open("data/dog.jpg")
-                time.sleep(60)
+                #time.sleep(60)
                 res = clf.predict(img)
                 print(res)
                 self.request.send(res.encode())
