@@ -1,6 +1,7 @@
 import socketserver
 import socket
 import pickle
+import time
 from classifier import Classifier
 import numpy as np
 from PIL import Image
@@ -34,6 +35,7 @@ class MyServer(socketserver.StreamRequestHandler):
                 self.request.send(res.encode())
             else:
                 break
+            time.sleep(3600)
 
 if __name__ == "__main__" :
     host = socket.gethostname()
