@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 print ('Content-Type: text/html')
 print ('')
-import socket,pickle,cgi,os
+import socket,pickle,cgi,os,time
 from PIL import Image
 
 form=cgi.FieldStorage()
@@ -27,12 +27,16 @@ data_s = pickle.dumps(img)
 num = 0 # try 10 times
 while(num<10):
     try:
+        print(time.asctime( time.localtime(time.time()) ) + ": send image - attempt " + str(num + 1))
         s.send(str(len(data_s)).encode())
         len = s.recv(1024)
         s.send(data_s)
+        print(time.asctime( time.localtime(time.time()) ) + ": successfully send, wait for response...")
         res = s.recv(1024)
         res = res.decode()
-        print(res)
+        print(time.asctime( time.localtime(time.time()) ) + "receive response")
+        print()
+        print("Result: " + res)
         s.close()
         break
     except Exception:
