@@ -29,13 +29,13 @@ class MyServer(socketserver.StreamRequestHandler):
                     
                 img = pickle.loads(str_data)
                 #img.save("img2.jpg", "JPEG")
-                # img = Image.open("data/dog.jpg")
+                #img = Image.open("data/dog.jpg")
                 res = clf.predict(img)
                 print(res)
                 self.request.send(res.encode())
             else:
                 break
-            time.sleep(3600)
+            #time.sleep(3600)
 
 if __name__ == "__main__" :
     host = socket.gethostname()
