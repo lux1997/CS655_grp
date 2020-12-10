@@ -5,7 +5,7 @@
 ### Setup
 1. Setup the Topology:
 
-   Reserve it from ```rspec.xml```:(https://raw.githubusercontent.com/lux1997/CS655_grp/main/rspec.xml)
+   Reserve it from ```rspec.xml```:[rspec.xml](https://raw.githubusercontent.com/lux1997/CS655_grp/main/rspec.xml)
 
    Or manually create the nodes: add one VM named server, then add one or multiple VM named client (our Rspec uses 5 client nodes), connect each client node with the server node. Then enable public routable ip for the nodes and set any InstaGENI.
 
