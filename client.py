@@ -27,15 +27,14 @@ data_s = pickle.dumps(img)
 num = 0 # try 10 times
 while(num<10):
     try:
-        print(time.asctime( time.localtime(time.time()) ) + ": send image - attempt " + str(num + 1))
+        print(time.asctime( time.localtime(time.time()) ) + ": send image - attempt " + str(num + 1) + "\n")
         s.send(str(len(data_s)).encode())
         len = s.recv(1024)
         s.send(data_s)
-        print(time.asctime( time.localtime(time.time()) ) + ": successfully send, wait for response...")
+        print(time.asctime( time.localtime(time.time()) ) + ": successfully send, wait for response...\n")
         res = s.recv(1024)
         res = res.decode()
-        print(time.asctime( time.localtime(time.time()) ) + "receive response")
-        print()
+        print(time.asctime( time.localtime(time.time()) ) + "receive response\n\n")
         print("Result: " + res)
         s.close()
         break
