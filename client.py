@@ -34,7 +34,7 @@ while(num<10):
         print(time.asctime( time.localtime(time.time()) ) + ": successfully send, wait for response...\n")
         res = s.recv(1024)
         res = res.decode()
-        print(time.asctime( time.localtime(time.time()) ) + "receive response\n\n")
+        print(time.asctime( time.localtime(time.time()) ) + "： receive response\n\n")
         print("Result: " + res)
         s.close()
         break
